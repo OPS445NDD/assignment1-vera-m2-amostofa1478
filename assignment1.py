@@ -108,4 +108,12 @@ def day_count(start_date: str, stop_date: str) -> int:
     return weekend_count
 
 if __name__ == "__main__":
-    pass
+    if len(sys.argv) != 3:
+        usage()
+    arg1 = sys.argv[1]
+    arg2 = sys.argv[2]
+    if not valid_date(arg1) or not valid_date(arg2):
+        usage()
+    start_date, end_date = sorted([arg1, arg2])
+    weekends = day_count(start_date, end_date)
+    print(f"The period between {start_date} and {end_date} includes {weekends} weekend days.")
